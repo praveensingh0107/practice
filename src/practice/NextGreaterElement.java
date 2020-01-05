@@ -48,6 +48,35 @@ public class NextGreaterElement {
         }
     }
 
+    public void findNext1(Integer[] arr) {
+        int index = findIdxOEElemSmallThanSubsequentArray(arr);
+        if (index == - 1) {
+            System.out.println("Not Possible");
+        } else {
+            int nextIdx = findIdxOfNxtGrtrElmntThanCurIdxElmnt(arr, index);
+            swap(arr, index, nextIdx);
+            Arrays.sort(arr, index + 1, arr.length);
+        }
+    }
+    private int findIdxOEElemSmallThanSubsequentArray(Integer[] arr) {
+        for (int i = arr.length-1; i > 0; i--) {
+            if (arr[i-1] < arr[i]) {
+                return i-1;
+            }
+        }
+        return -1;
+    }
+
+    private int findIdxOfNxtGrtrElmntThanCurIdxElmnt(Integer[] arr, int currentIndex) {
+        //int minIdx = -1; int minVal = Integer.MAX_VALUE;
+        for (int i = arr.length -1; i > currentIndex; i--) {
+            if (arr[i] > arr[currentIndex]) {
+                return i;
+            }
+        }
+        return currentIndex;
+    }
+
     private void swap(Integer[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
@@ -60,6 +89,26 @@ public class NextGreaterElement {
         obj.findNext(arr);
         List<Integer> collect = Arrays.stream(arr).collect(Collectors.toList());
         System.out.println(collect);
+
+        Integer[] arr1 = {2, 1, 8, 6, 7, 5};
+        obj.findNext1(arr1);
+        List<Integer> collect1 = Arrays.stream(arr1).collect(Collectors.toList());
+        System.out.println(collect1);
+
+        Integer[] arr2 = {2, 1, 8, 7, 6, 5};
+        obj.findNext1(arr2);
+        List<Integer> collect2 = Arrays.stream(arr2).collect(Collectors.toList());
+        System.out.println(collect2);
+
+        Integer[] arr3 = {4, 3, 2, 1};
+        obj.findNext1(arr3);
+        List<Integer> collect3 = Arrays.stream(arr3).collect(Collectors.toList());
+        System.out.println(collect3);
+
+        Integer[] arr4 = {1, 2, 3, 4};
+        obj.findNext1(arr4);
+        List<Integer> collect4 = Arrays.stream(arr4).collect(Collectors.toList());
+        System.out.println(collect4);
 
     }
 }
