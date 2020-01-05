@@ -35,8 +35,8 @@ public class PainterPartitionProblem {
             long hi = C.stream().mapToInt(Integer::intValue).sum();
             while (lo < hi) {
                 long mid = lo + (hi -lo)/2;
-                long getStudent = getRequiredPainters(C, mid);
-                if (getStudent <= A) {
+                long getPainters = getRequiredPainters(C, mid);
+                if (getPainters <= A) {
                     hi = mid;
                 } else {
                     lo = mid + 1;
