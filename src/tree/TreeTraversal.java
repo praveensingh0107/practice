@@ -105,22 +105,14 @@ public class TreeTraversal {
             return;
         Map<Integer, LinkedList<Integer>> map = new TreeMap<Integer, LinkedList<Integer>>();
         diagonalTraversalUtil(root, map, 0);
-        for (Entry<Integer, LinkedList<Integer>> e : map.entrySet()) {
-            for (Integer val : e.getValue()) {
-                System.out.print(val + " ");
-            }
-            System.out.println();
-        }
+        map.entrySet().stream().map(x -> x.getValue()).forEach(System.out::println);
     }
 
     public static void diagonalTraversalUtil(Tree root, Map<Integer, LinkedList<Integer>> map,
             int level) {
         if (root != null) {
             diagonalTraversalUtil(root.left, map, level + 1);
-            LinkedList<Integer> list = map.get(level);
-            if (list == null) {
-                list = new LinkedList<>();
-            }
+            LinkedList<Integer> list = map.getOrDefault(level, new LinkedList<>());
             list.add(root.data);
             map.put(level, list);
             diagonalTraversalUtil(root.right, map, level);
