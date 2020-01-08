@@ -1,6 +1,7 @@
 package intbit.backtracking;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,6 +29,7 @@ import java.util.List;
  * */
 public class Subset {
     public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> a) {
+        Collections.sort(a);
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         subsets(res, a, new ArrayList<Integer>(), 0, a.size());
         return res;
