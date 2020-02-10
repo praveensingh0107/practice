@@ -17,7 +17,6 @@ public class CatalanNumber {
         return dp[n];
     }
 
-
     public static void main(String[] args) {
         CatalanNumber obj = new CatalanNumber();
         System.out.println(obj.catalanNumber(5));
