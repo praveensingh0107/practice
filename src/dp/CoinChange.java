@@ -2,6 +2,7 @@ package dp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class CoinChange {
 
@@ -40,6 +41,21 @@ public class CoinChange {
         }
     }
 
+    public static int coinChangeDP(int[] denom, int val) {
+        int m = denom.length;
+        int[][] dp = new int[val+1][m+1];
+        IntStream.range(0, m+1).forEach(x -> dp[0][x] = 1);
+        for (int i = 1; i <= val; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (denom[j-1] > i)
+                    dp[i][j] = dp[i][j-1];
+                else
+                    dp[i][j] = dp[i][j-1] + dp[i-denom[j-1]][j];
+            }
+        }
+        return dp[val][m];
+    }
+
     public static void main(String[] args) {
         int[] denom = new int[] {2, 1, 3};
         int val = 4;
@@ -49,6 +65,7 @@ public class CoinChange {
         result.clear();
         System.out.println(coinChange(denom, denom.length - 1, val, "", result));
         System.out.println(result);
+        System.out.println(coinChangeDP(denom, val));
 
     }
 
