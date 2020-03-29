@@ -64,12 +64,12 @@ public class SortingPractice {
             }
             k++;
         }
-        if (i < mid + 1) {
+        while (i < mid + 1) {
             arr[k] = base[i];
             i++;
             k++;
         }
-        if (j < r + 1) {
+        while (j < r + 1) {
             arr[k] = base[j];
             j++;
             k++;
