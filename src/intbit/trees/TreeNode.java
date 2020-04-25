@@ -1,13 +1,13 @@
 package intbit.trees;
 
 public class TreeNode {
-    public int val;
+    int val;
 
-    public TreeNode left;
+    TreeNode left;
 
-    public TreeNode right;
+    TreeNode right;
 
-    public TreeNode(int x) {
+    TreeNode(int x) {
         val = x;
         left = null;
         right = null;
